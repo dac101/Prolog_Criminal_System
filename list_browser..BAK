@@ -1,0 +1,17 @@
+% Author:
+% Date: 25/03/2015
+
+list_browser :-
+        new(D, dialog('Prolog Source Files')),
+        send(D, append, new(B, list_browser)),
+        send_list(B, append, [ggg,yhhh]),
+        send(D, open).
+
+
+list_browser([Head]) :-
+        new(D, dialog('Prolog Source Files')),
+        send(D, append, new(B, list_browser)),
+        send_list(B, append, Head),
+        send(D, open).
+
+all_suspect(L) :- findall([A,S,D,F,G,H,Y,U,Z],(suspect(A,S,D,F,G,H,Y,U,Z)),L).

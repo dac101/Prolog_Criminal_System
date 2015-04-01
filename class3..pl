@@ -1,0 +1,76 @@
+% Author:Daorie
+% Date: 29/01/2015
+
+wise(john).
+rich(john).
+happy(john).
+healthy(pam).
+
+happy(Person):-
+             rich(Person),wise(Person).
+happy(X):-
+          healthy(X).
+          
+movie('Jumper').
+movie('Rider').
+series('Rider').
+series('Jumper').
+producer('John Rohden','Jumper').
+producer('Gavin James','Rider').
+
+loves(william,X):- watches(william,X),movie(X).
+watches(william,Y):- movie(Y),producer('John Rohden',Y).
+watches(sandrea,Z):- loves(william,Z), series(Z).
+
+/* genealogy*/
+male(sam).
+male(john).
+male(shawn).
+male(tim).
+male(sterling).
+
+female(mary).
+female(jane).
+female(eunice).
+female(jodi).
+female(pam).
+female(kim).
+
+father(paul,sam).
+father(paul,tim).
+father(paul,jodi).
+father(paul,mary).
+father(john,paul).
+father(john,sterling).
+father(john,enunice).
+
+mother(eunice,jane).
+mother(eunice,jodi).
+mother(eunice,jane).
+mother(jodi,kim).
+
+uncle(sterling,jane).
+uncle(sterling,jodi).
+uncle(sterling,jane).
+uncle(sterling,kim).
+
+aunt(jodi,jane).
+aunt(jodi,jodi).
+aunt(jodi,jane).
+aunt(jodi,kim).
+
+brother(X,Y):-
+              father(Person,X),father(Person,Y); mother(Person,X),mother(Person,Y),
+X\==Y,male(X).
+
+sister(X,Y):-
+              father(Person, X),father(Person,Y);
+              mother(Person,X),mother(Person,Y),
+              X\==Y,female(X).
+
+parent(X,F,M):-
+           father(F,X),mother(M,X),X\==F,X\==M.
+
+/* list Let's go through the last example again in more detail. Suppose we pose the query: */
+ fruit(apples,[pears, tomatoes, apples, grapes]).
+ names([dacorie,testing,yep]).

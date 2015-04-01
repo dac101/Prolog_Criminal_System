@@ -1,0 +1,4 @@
+suspect(a,a,a,a,a,a,a,a,s).
+suspect(dacorie,smith,male,black,scar,white,black,343,dsds).
+suspect(dacorie,smith,male,something,fac,smms,thingksd,ddsdfs,ddfsdsds).
+suspect(da,dasd,male,,femaledsad,dsad,dasd,dasdas,dsad,dsadsa).

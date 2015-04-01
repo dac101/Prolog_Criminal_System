@@ -1,0 +1,81 @@
+% Author:
+% Date: 12/03/2015
+
+gradePrediction(LetterGrade,Value):-
+               Value @>= 84,
+               LetterGrade = a;
+                Value @>= 70,Value < 84,
+               LetterGrade = b;
+                 Value @>= 50, Value < 70,
+               LetterGrade = c;
+                 Value < 50,
+               LetterGrade = d .
+
+   gradePrediction(Who,12).
+    find([],N) :-
+        write('There is no such element in the list').
+
+    find([Element|_],1) :-
+        write('Your element is '),write(Element).
+
+    find([Element|List],N) :-
+        N1 is N-1,
+        find(List,N1).
+        
+    minList([Only],Only).       % We've found the minimum
+    
+    minList([Element,T|List],N):-
+        Element =< T,
+        minList([Element|List],N);
+        Element >= T,
+        minList([T|List],N).
+        
+    
+contract_labour:-
+        nl, write('Enter name: '), read(Name),
+        nl,write('Enter job performed: '),read(Job_performed),
+        nl, write('Enter hours worked: '), read(Hours),
+        nl, write('Enter code: '), read(Code),
+        calc_pay(Code, Hours, Pay),
+        displayInfo(Name, Job_performed, Hours, Pay).
+
+calc_pay(Code, Hours, Pay):-
+                            (
+                              Code == 'j' -> Rate is 350;
+                              ( Code == 'a' -> Rate is 250;
+                                ( Code == 'c' -> Rate is 200; Rate is 0 )
+                              )
+                            ),
+                            Pay is (Rate * Hours).
+
+displayInfo(Name, Job_performed, Hours, Pay):-
+                                         nl, tab(10), write('****'), write(Name),
+                                         write('\'s Contract Labour ****'), nl, nl,
+                                         write('job performed: '), write(Job_performed), tab(10),
+                                         write('Hours: '), write(Hours), nl, tab(28),
+                                         write(' Pay: $'),write(Pay), nl, nl ,
+                                         write('Do you want to calculate another contract labour <y/n>'),
+                                         read(Ans), (Ans = y -> nl, salary;nl, write('Thank you...Please come again!!!'),!).
+
+% Electricity Bill
+
+electricity_bill:-
+        nl, write('Enter Customer Account #: '), read(CustNum),
+        nl, write('Enter Customer Name: '), read(Name),
+        nl, write('Enter electricity usage in hours: '), read(Hours),
+        calc_owing(Hours, Owing),
+        displayBill(CustNum, Name, Hours, Owing).
+
+calc_owing(Hours, Owing):-
+         (Hours > 200 -> Owing is Hours * 108.22; Owing is Hours * 123.45).
+
+displayBill(CustNum, Name, Hours, Owing):-
+                                         nl, tab(10), write('****'),
+                                         write(' Electricity Bill Information ****'), nl, nl,
+                                         write('Customer Account #: '), write(CustNum), tab(10),
+                                         write(' Name:'), write(Name), nl, nl,
+                                         write('Hours: '), write(Hours), tab(10),
+                                         write('Amount Owing: $'), write(Owing), nl, nl, write('****'), nl,
+                                         write('Do you want to generate another bill? <y/n>'),
+                                         read(Ans), (Ans = y -> nl, electricity_bill;nl, write('Thank you...Pleas come again!!!'),!).
+                                         

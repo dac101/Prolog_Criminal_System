@@ -1,0 +1,4 @@
+suspect(FirstNameLastNamegendereye_colorhair_colorspecial_featureshair_styleskin_colorheight).
+suspect(FirstName,LastName,gender,eye_color,hair_color,special_features,hair_style,skin_color,height).
+suspect(FirstName,LastName,gender,eye_color,hair_color,special_features,hair_style,skin_color,height).
+suspect(a,a,a,a,a,a,a,a,s).
